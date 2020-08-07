@@ -38,45 +38,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
-margin_right = 293.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 192.0
 margin_bottom = 18.0
-text = "Units remaining"
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+margin_right = 129.0
+margin_bottom = 18.0
+text = "Arriving Soon:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="VBoxContainer"]
-margin_top = 22.0
-margin_right = 293.0
-margin_bottom = 40.0
-text = "Units remaining"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label4" type="Label" parent="VBoxContainer"]
-margin_top = 44.0
-margin_right = 293.0
-margin_bottom = 62.0
-text = "Units remaining"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label5" type="Label" parent="VBoxContainer"]
-margin_top = 66.0
-margin_right = 293.0
-margin_bottom = 84.0
-text = "Units remaining"
+[node name="Units_Remaining_To_Be_Shipped" type="Label" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 133.0
+margin_right = 162.0
+margin_bottom = 18.0
+text = "100"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 88.0
-margin_right = 293.0
-margin_bottom = 106.0
+margin_top = 22.0
+margin_right = 192.0
+margin_bottom = 40.0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
 margin_right = 145.0
@@ -91,6 +77,42 @@ margin_left = 149.0
 margin_right = 178.0
 margin_bottom = 18.0
 text = "100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+margin_top = 44.0
+margin_right = 192.0
+margin_bottom = 62.0
+text = "Current Flow_rate:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+margin_top = 66.0
+margin_right = 192.0
+margin_bottom = 84.0
+text = "Current_Sell_Rate:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+margin_top = 88.0
+margin_right = 192.0
+margin_bottom = 106.0
+text = "Current_Customers:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="VBoxContainer"]
+margin_top = 110.0
+margin_right = 192.0
+margin_bottom = 128.0
+text = "Units remaining"
 __meta__ = {
 "_edit_use_anchors_": false
 }

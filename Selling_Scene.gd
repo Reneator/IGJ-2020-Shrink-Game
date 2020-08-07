@@ -22,9 +22,17 @@ This would be close to paperclip logic, where you sometimes would have to change
 
 """
 
+
+"""
+Number of customers defines the sell-rate
+
+"""
+
 var units_arriving_per_second = 10
 
-var units_left = 100
+var units_remaining_globally = 7800000000
+
+var units_in_storage = 100
 
 var money = 0
 
@@ -45,14 +53,15 @@ func _process(delta):
 	refresh_ui()
 
 func refresh_ui():
-	$VBoxContainer/HBoxContainer/Unit_Count_Label.text = str(units_left)
+	$VBoxContainer/HBoxContainer/Unit_Count_Label.text = str(units_in_storage)
+	$VBoxContainer/HBoxContainer2/Units_Remaining_To_Be_Shipped.text = str(units_remaining_globally)
 	
 	
 
 func sell_unit():
-	if units_left <= 0:
+	if units_in_storage <= 0:
 		return
-	units_left -= 1
+	units_in_storage -= 1
 	money += start_price_per_unit
 	
 
