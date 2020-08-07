@@ -1,0 +1,107 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Fonts/Kenney Future Narrow.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Background.png" type="Texture" id=2]
+[ext_resource path="res://Selling_Scene.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="Selling_Scene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 2 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 655.049
+margin_top = 156.683
+margin_right = 695.049
+margin_bottom = 196.683
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+margin_right = 293.0
+margin_bottom = 18.0
+text = "Units remaining"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+margin_top = 22.0
+margin_right = 293.0
+margin_bottom = 40.0
+text = "Units remaining"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+margin_top = 44.0
+margin_right = 293.0
+margin_bottom = 62.0
+text = "Units remaining"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="VBoxContainer"]
+margin_top = 66.0
+margin_right = 293.0
+margin_bottom = 84.0
+text = "Units remaining"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 88.0
+margin_right = 293.0
+margin_bottom = 106.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_right = 145.0
+margin_bottom = 18.0
+text = "Units remaining:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Unit_Count_Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 149.0
+margin_right = 178.0
+margin_bottom = 18.0
+text = "100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sell_Unit_Button" type="Button" parent="."]
+margin_left = 886.984
+margin_top = 280.962
+margin_right = 982.984
+margin_bottom = 304.962
+text = "Sell Unit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Sell_Unit_Button" to="." method="_on_Sell_Unit_Button_pressed"]
