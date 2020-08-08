@@ -31,9 +31,15 @@ export (int) var threshold_6
 export (int) var threshold_7
 export (int) var threshold_8
 
+func _ready():
+	refresh_customers()
+
 
 func set_customer_count(count):
 	customer_count = count
+	refresh_customers()
+
+func refresh_customers():
 	if cust_1:
 		cust_1.visible = customer_count >= threshold_1
 	if cust_2:

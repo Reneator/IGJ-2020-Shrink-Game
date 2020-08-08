@@ -28,6 +28,14 @@ Number of customers defines the sell-rate
 
 """
 
+"""
+TODO: Create main gameplay loop
+Get upgrades working
+upgrade_buttons disable when not enough moneyy
+Upgrades display via tooltip
+
+"""
+
 var active = false #if the loop is running or not, so the game can be paused
 
 var interested_customers = 0 #the customers that would want to buy a unit
