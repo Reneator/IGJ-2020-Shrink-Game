@@ -1,0 +1,36 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Storage.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Storage/Storage_90.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Storage/Storage_30.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Storage/Storage_Empty.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Storage/Storage_40.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Storage/Storage_50.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Storage/Storage_70.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Storage/Storage_80.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Storage/Storage_10.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Storage/Storage_20.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Storage/Storage_60.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Storage/Storage_100.png" type="Texture" id=12]
+
+[node name="Storage" type="TextureRect"]
+margin_right = 500.0
+margin_bottom = 500.0
+texture = ExtResource( 3 )
+expand = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+percent_full = 0.3
+empty = ExtResource( 4 )
+ten_percent = ExtResource( 9 )
+twenty_percent = ExtResource( 10 )
+thirty_percent = ExtResource( 3 )
+fourty_percent = ExtResource( 5 )
+fifty_percent = ExtResource( 6 )
+sixty_percent = ExtResource( 11 )
+seventy_percent = ExtResource( 7 )
+eighty_percent = ExtResource( 8 )
+ninety_percent = ExtResource( 2 )
+full = ExtResource( 12 )
