@@ -1,4 +1,3 @@
-tool
 extends Control
 
 
@@ -19,7 +18,7 @@ export (int) var threshold_2
 export (int) var threshold_3
 export (int) var threshold_4
 
-func _ready():
+func _process(delta):
 	refresh_storages()
 
 func set_current_number(number):
@@ -27,6 +26,12 @@ func set_current_number(number):
 	refresh_storages()
 
 func refresh_storages():
+	var number_of_storages = Global_2.get_number_of_storages()
+	current_number = number_of_storages
+	var fill_percentage = Global_2.get_storage_fill_percent()
+	for child in get_children():
+		child.percent_full = fill_percentage
+	
 	if not storage_1:
 		storage_1 = get_node(storage_1_path)
 	if storage_1:

@@ -19,6 +19,10 @@ config/name="Shrink Game Jam"
 run/main_scene="res://Selling_Scene.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global_2="*res://Scene_2_Global.gd"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Storage.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Storages.gd" type="Script" id=14]
+
+[node name="Storages" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+current_number = 4
+storage_1_path = NodePath("Storage")
+storage_2_path = NodePath("Storage2")
+storage_3_path = NodePath("Storage3")
+storage_4_path = NodePath("Storage4")
+threshold_1 = 1
+threshold_2 = 2
+threshold_3 = 3
+threshold_4 = 4
+
+[node name="Storage3" parent="." instance=ExtResource( 2 )]
+margin_left = 511.146
+margin_top = -187.208
+margin_right = 1011.15
+margin_bottom = 312.792
+
+[node name="Storage" parent="." instance=ExtResource( 2 )]
+margin_left = 246.245
+margin_top = -98.5331
+margin_right = 746.245
+margin_bottom = 401.467
+
+[node name="Storage2" parent="." instance=ExtResource( 2 )]
+margin_left = -18.6561
+margin_top = -12.1035
+margin_right = 481.344
+margin_bottom = 487.897
+
+[node name="Storage4" parent="." instance=ExtResource( 2 )]
+margin_left = -280.19
+margin_top = 70.9587
+margin_right = 219.81
+margin_bottom = 570.959

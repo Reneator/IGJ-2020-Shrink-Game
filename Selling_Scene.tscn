@@ -1,25 +1,25 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Panel_Hide_Button.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Background/Background.png" type="Texture" id=2]
 [ext_resource path="res://Selling_Scene.gd" type="Script" id=3]
-[ext_resource path="res://Bar_White.png" type="Texture" id=4]
+[ext_resource path="res://UI/Storage_Cost_Bar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Fonts/Kenney Mini Square.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Store_Front.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Storage.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/Storages.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Customers.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Pixel_Coleco_Theme.tres" type="Theme" id=9]
 [ext_resource path="res://Customers.gd" type="Script" id=10]
 [ext_resource path="res://Store_Fronts.gd" type="Script" id=11]
-[ext_resource path="res://Storages.gd" type="Script" id=12]
+[ext_resource path="res://UI/Displays/Display_Container.tscn" type="PackedScene" id=12]
+[ext_resource path="res://UI/Money_Label.gd" type="Script" id=14]
+[ext_resource path="res://UI/Global_Units_Progress_Bar.tscn" type="PackedScene" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 5 )
-
-[sub_resource type="StyleBoxEmpty" id=2]
 
 [node name="Selling_Scene" type="Control"]
 anchor_right = 1.0
@@ -38,46 +38,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Storages" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-current_number = 4
-storage_1_path = NodePath("Storage")
-storage_2_path = NodePath("Storage2")
-storage_3_path = NodePath("Storage3")
-storage_4_path = NodePath("Storage4")
-threshold_1 = 1
-threshold_2 = 2
-threshold_3 = 3
-threshold_4 = 4
-
-[node name="Storage3" parent="Storages" instance=ExtResource( 7 )]
-margin_left = 511.146
-margin_top = -187.208
-margin_right = 1011.15
-margin_bottom = 312.792
-
-[node name="Storage" parent="Storages" instance=ExtResource( 7 )]
-margin_left = 246.245
-margin_top = -98.5331
-margin_right = 746.245
-margin_bottom = 401.467
-
-[node name="Storage2" parent="Storages" instance=ExtResource( 7 )]
-margin_left = -18.6561
-margin_top = -12.1035
-margin_right = 481.344
-margin_bottom = 487.897
-
-[node name="Storage4" parent="Storages" instance=ExtResource( 7 )]
-margin_left = -280.19
-margin_top = 70.9587
-margin_right = 219.81
-margin_bottom = 570.959
+[node name="Storages" parent="." instance=ExtResource( 7 )]
 
 [node name="Store_Fronts" type="Control" parent="."]
 margin_right = 40.0
@@ -234,6 +195,7 @@ grow_vertical = 2
 custom_fonts/font = SubResource( 1 )
 text = "100 $"
 align = 1
+script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -249,85 +211,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Progress_Bar" type="PanelContainer" parent="."]
-anchor_right = 1.0
-margin_bottom = 45.0
-size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Global_Units_Progress_Bar" parent="." instance=ExtResource( 15 )]
 
-[node name="TextureProgress" type="TextureProgress" parent="Progress_Bar"]
-margin_right = 1024.0
-margin_bottom = 45.0
-value = 50.0
-texture_under = ExtResource( 4 )
-texture_progress = ExtResource( 4 )
-fill_mode = 1
-tint_under = Color( 0.745098, 0.745098, 0.745098, 1 )
-tint_progress = Color( 0.737255, 0.862745, 0.509804, 1 )
-nine_patch_stretch = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Progress_Label" type="Label" parent="Progress_Bar"]
-margin_top = 13.0
-margin_right = 1024.0
-margin_bottom = 31.0
-text = "100%"
-align = 1
-
-[node name="Storage_Cost_Bar" type="PanelContainer" parent="."]
-anchor_right = 1.0
-margin_top = 41.5311
-margin_bottom = 61.5311
-size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureProgress" type="TextureProgress" parent="Storage_Cost_Bar"]
-margin_right = 1024.0
-margin_bottom = 20.0
-value = 50.0
-texture_under = ExtResource( 4 )
-texture_progress = ExtResource( 4 )
-tint_under = Color( 0.745098, 0.745098, 0.745098, 1 )
-tint_progress = Color( 0.862745, 0.509804, 0.509804, 1 )
-nine_patch_stretch = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="HBoxContainer" parent="Storage_Cost_Bar"]
-margin_right = 1024.0
-margin_bottom = 20.0
-alignment = 1
-
-[node name="Label" type="Label" parent="Storage_Cost_Bar/VBoxContainer"]
-margin_left = 444.0
-margin_top = 1.0
-margin_right = 543.0
-margin_bottom = 19.0
-text = "Next Cost:"
-
-[node name="Progress_Label" type="Label" parent="Storage_Cost_Bar/VBoxContainer"]
-margin_left = 547.0
-margin_top = 1.0
-margin_right = 565.0
-margin_bottom = 19.0
-text = "50"
-align = 1
-
-[node name="Label2" type="Label" parent="Storage_Cost_Bar/VBoxContainer"]
-margin_left = 569.0
-margin_top = 1.0
-margin_right = 579.0
-margin_bottom = 19.0
-text = "$"
+[node name="Storage_Cost_Bar" parent="." instance=ExtResource( 4 )]
 
 [node name="Toggle_Button" type="Button" parent="."]
 margin_left = 961.992
@@ -340,333 +226,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer" type="PanelContainer" parent="Toggle_Button"]
-self_modulate = Color( 1, 1, 1, 0.937255 )
-margin_left = -417.206
-margin_top = -260.582
-margin_right = 54.7941
-margin_bottom = -4.58154
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Toggle_Button/PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 465.0
-margin_bottom = 249.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Displays" type="VBoxContainer" parent="Toggle_Button/PanelContainer/HBoxContainer"]
-margin_right = 298.0
-margin_bottom = 242.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays"]
-margin_right = 298.0
-margin_bottom = 18.0
-
-[node name="Label" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays/HBoxContainer2"]
-margin_bottom = 18.0
-rect_min_size = Vector2( 0, 18 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Units_Remaining_To_Be_Shipped" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays/HBoxContainer2"]
-margin_left = 4.0
-margin_right = 298.0
-margin_bottom = 18.0
-size_flags_horizontal = 3
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer8" type="HBoxContainer" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays"]
-margin_top = 22.0
-margin_right = 298.0
-margin_bottom = 46.0
-rect_min_size = Vector2( 0, 24 )
-
-[node name="Label" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays/HBoxContainer8"]
-margin_top = 3.0
-margin_right = 237.0
-margin_bottom = 21.0
-text = "Global Units remaining: "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Units_Remaining_To_Be_Shipped" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays/HBoxContainer8"]
-margin_left = 241.0
-margin_top = 3.0
-margin_right = 298.0
-margin_bottom = 21.0
-size_flags_horizontal = 3
-text = "100"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays"]
-margin_top = 50.0
-margin_right = 298.0
-margin_bottom = 74.0
-rect_min_size = Vector2( 0, 24 )
-
-[node name="Label" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays/HBoxContainer5"]
-margin_top = 3.0
-margin_right = 129.0
-margin_bottom = 21.0
-text = "Delivery_Rate"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Units_Remaining_To_Be_Shipped" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays/HBoxContainer5"]
-margin_left = 133.0
-margin_top = 3.0
-margin_right = 298.0
-margin_bottom = 21.0
-size_flags_horizontal = 3
-text = "1 per s"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays"]
-margin_top = 78.0
-margin_right = 298.0
-margin_bottom = 102.0
-rect_min_size = Vector2( 0, 24 )
-
-[node name="Label" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays/HBoxContainer"]
-margin_top = 3.0
-margin_right = 168.0
-margin_bottom = 21.0
-text = "Units in Storage:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Unit_Count_Label" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays/HBoxContainer"]
-margin_left = 172.0
-margin_top = 3.0
-margin_right = 298.0
-margin_bottom = 21.0
-size_flags_horizontal = 3
-text = "100"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer9" type="HBoxContainer" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays"]
-margin_top = 106.0
-margin_right = 298.0
-margin_bottom = 130.0
-rect_min_size = Vector2( 0, 24 )
-
-[node name="Label" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays/HBoxContainer9"]
-margin_top = 3.0
-margin_right = 119.0
-margin_bottom = 21.0
-text = "Max Storage:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Unit_Count_Label" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays/HBoxContainer9"]
-margin_left = 123.0
-margin_top = 3.0
-margin_right = 298.0
-margin_bottom = 21.0
-size_flags_horizontal = 3
-text = "100"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays"]
-margin_top = 134.0
-margin_right = 298.0
-margin_bottom = 158.0
-rect_min_size = Vector2( 0, 24 )
-
-[node name="Label" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays/HBoxContainer3"]
-margin_top = 3.0
-margin_right = 179.0
-margin_bottom = 21.0
-text = "Current CUstomers:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Current_Customers_Label" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays/HBoxContainer3"]
-margin_left = 183.0
-margin_top = 3.0
-margin_right = 298.0
-margin_bottom = 21.0
-size_flags_horizontal = 3
-text = "100"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays"]
-margin_top = 162.0
-margin_right = 298.0
-margin_bottom = 186.0
-rect_min_size = Vector2( 0, 24 )
-
-[node name="Label" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays/HBoxContainer4"]
-margin_top = 3.0
-margin_right = 267.0
-margin_bottom = 21.0
-text = "Customer Acquisition rate: "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Current_Customers_Label" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays/HBoxContainer4"]
-margin_left = 271.0
-margin_top = 3.0
-margin_right = 298.0
-margin_bottom = 21.0
-size_flags_horizontal = 3
-text = "100"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer6" type="HBoxContainer" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays"]
-margin_top = 190.0
-margin_right = 298.0
-margin_bottom = 214.0
-rect_min_size = Vector2( 0, 24 )
-
-[node name="Label" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays/HBoxContainer6"]
-margin_top = 3.0
-margin_right = 118.0
-margin_bottom = 21.0
-text = "Sales Per S:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Current_Customers_Label" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays/HBoxContainer6"]
-margin_left = 122.0
-margin_top = 3.0
-margin_right = 298.0
-margin_bottom = 21.0
-size_flags_horizontal = 3
-text = "100"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer7" type="HBoxContainer" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays"]
-margin_top = 218.0
-margin_right = 298.0
-margin_bottom = 242.0
-rect_min_size = Vector2( 0, 24 )
-
-[node name="Label" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays/HBoxContainer7"]
-margin_top = 3.0
-margin_right = 257.0
-margin_bottom = 21.0
-text = "Customer turnover factor :"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Current_Customers_Label" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/Displays/HBoxContainer7"]
-margin_left = 261.0
-margin_top = 3.0
-margin_right = 298.0
-margin_bottom = 21.0
-size_flags_horizontal = 3
-text = "10%"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Control" type="Control" parent="Toggle_Button/PanelContainer/HBoxContainer"]
-margin_left = 302.0
-margin_right = 312.0
-margin_bottom = 242.0
-rect_min_size = Vector2( 10, 0 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Toggle_Button/PanelContainer/HBoxContainer"]
-margin_left = 316.0
-margin_right = 458.0
-margin_bottom = 242.0
-
-[node name="Label" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/VBoxContainer"]
-margin_right = 142.0
-margin_bottom = 18.0
-text = "Upgrades"
-
-[node name="Label2" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/VBoxContainer"]
-margin_top = 22.0
-margin_right = 142.0
-margin_bottom = 46.0
-rect_min_size = Vector2( 0, 24 )
-
-[node name="Button2" type="Button" parent="Toggle_Button/PanelContainer/HBoxContainer/VBoxContainer"]
-margin_top = 50.0
-margin_right = 142.0
-margin_bottom = 74.0
-hint_tooltip = "Delivery_Test_Tooltip"
-text = "Delivery"
-
-[node name="Label4" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/VBoxContainer"]
-margin_top = 78.0
-margin_right = 142.0
-margin_bottom = 102.0
-rect_min_size = Vector2( 0, 24 )
-
-[node name="Button" type="Button" parent="Toggle_Button/PanelContainer/HBoxContainer/VBoxContainer"]
-margin_top = 106.0
-margin_right = 142.0
-margin_bottom = 130.0
-text = "Storage"
-
-[node name="Label3" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/VBoxContainer"]
-margin_top = 134.0
-margin_right = 142.0
-margin_bottom = 158.0
-rect_min_size = Vector2( 0, 24 )
-
-[node name="Button3" type="Button" parent="Toggle_Button/PanelContainer/HBoxContainer/VBoxContainer"]
-margin_top = 162.0
-margin_right = 142.0
-margin_bottom = 186.0
-text = "Advertisement"
-
-[node name="Button4" type="Button" parent="Toggle_Button/PanelContainer/HBoxContainer/VBoxContainer"]
-margin_top = 190.0
-margin_right = 142.0
-margin_bottom = 214.0
-text = "New Shop"
-
-[node name="Button5" type="Button" parent="Toggle_Button/PanelContainer/HBoxContainer/VBoxContainer"]
-margin_top = 218.0
-margin_right = 142.0
-margin_bottom = 242.0
-text = "Sales Tactics"
+[node name="PanelContainer" parent="Toggle_Button" instance=ExtResource( 12 )]
+margin_left = -450.577
+margin_top = -267.256
+margin_right = 54.423
+margin_bottom = -11.2557
 
 [node name="AcceptDialog" type="AcceptDialog" parent="."]
 anchor_left = 0.5

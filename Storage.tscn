@@ -16,13 +16,13 @@
 [node name="Storage" type="TextureRect"]
 margin_right = 500.0
 margin_bottom = 500.0
-texture = ExtResource( 3 )
+texture = ExtResource( 10 )
 expand = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-percent_full = 0.3
+percent_full = 0.15
 empty = ExtResource( 4 )
 ten_percent = ExtResource( 9 )
 twenty_percent = ExtResource( 10 )

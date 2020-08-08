@@ -1,0 +1,354 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://UI/Displays/Units_Remaining_To_Be_Shipped.gd" type="Script" id=1]
+[ext_resource path="res://UI/Displays/Delivery_Rate.gd" type="Script" id=2]
+[ext_resource path="res://UI/Displays/Units_In_Storage.gd" type="Script" id=3]
+[ext_resource path="res://UI/Displays/Max_Storage.gd" type="Script" id=4]
+[ext_resource path="res://UI/Displays/Customer_Acquisition_Rate.gd" type="Script" id=5]
+[ext_resource path="res://UI/Displays/Current_Customers_Label.gd" type="Script" id=6]
+[ext_resource path="res://UI/Displays/Current_Sales_Rate.gd" type="Script" id=7]
+[ext_resource path="res://UI/Displays/Sales_Efficiency.gd" type="Script" id=8]
+[ext_resource path="res://UI/Displays/Display_Container.gd" type="Script" id=9]
+
+[node name="Display_Container" type="PanelContainer"]
+self_modulate = Color( 1, 1, 1, 0.937255 )
+margin_left = -417.206
+margin_top = -260.582
+margin_right = 54.7941
+margin_bottom = -4.58154
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 465.0
+margin_bottom = 249.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Displays" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 239.0
+margin_bottom = 242.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/Displays"]
+margin_right = 239.0
+margin_bottom = 18.0
+
+[node name="Label" type="Label" parent="HBoxContainer/Displays/HBoxContainer2"]
+margin_bottom = 18.0
+rect_min_size = Vector2( 0, 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Filler" type="Label" parent="HBoxContainer/Displays/HBoxContainer2"]
+margin_left = 4.0
+margin_top = 2.0
+margin_right = 239.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="HBoxContainer/Displays"]
+margin_top = 22.0
+margin_right = 239.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="Label" type="Label" parent="HBoxContainer/Displays/HBoxContainer8"]
+margin_top = 5.0
+margin_right = 155.0
+margin_bottom = 19.0
+text = "Global Units remaining: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Units_Remaining_To_Be_Shipped" type="Label" parent="HBoxContainer/Displays/HBoxContainer8"]
+margin_left = 159.0
+margin_top = 5.0
+margin_right = 239.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "1000000000"
+align = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="HBoxContainer/Displays"]
+margin_top = 50.0
+margin_right = 239.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="Label" type="Label" parent="HBoxContainer/Displays/HBoxContainer5"]
+margin_top = 5.0
+margin_right = 101.0
+margin_bottom = 19.0
+text = "Deliveries per S"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Delivery_Rate" type="Label" parent="HBoxContainer/Displays/HBoxContainer5"]
+margin_left = 105.0
+margin_top = 5.0
+margin_right = 239.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "1"
+align = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Displays"]
+margin_top = 78.0
+margin_right = 239.0
+margin_bottom = 102.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="Label" type="Label" parent="HBoxContainer/Displays/HBoxContainer"]
+margin_top = 5.0
+margin_right = 105.0
+margin_bottom = 19.0
+text = "Units in Storage:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Units_In_Storage" type="Label" parent="HBoxContainer/Displays/HBoxContainer"]
+margin_left = 109.0
+margin_top = 5.0
+margin_right = 239.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "100"
+align = 2
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="HBoxContainer/Displays"]
+margin_top = 106.0
+margin_right = 239.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="Label" type="Label" parent="HBoxContainer/Displays/HBoxContainer9"]
+margin_top = 5.0
+margin_right = 81.0
+margin_bottom = 19.0
+text = "Max Storage:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Max_Storage" type="Label" parent="HBoxContainer/Displays/HBoxContainer9"]
+margin_left = 85.0
+margin_top = 5.0
+margin_right = 239.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "100"
+align = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/Displays"]
+margin_top = 134.0
+margin_right = 239.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="Label" type="Label" parent="HBoxContainer/Displays/HBoxContainer3"]
+margin_top = 5.0
+margin_right = 124.0
+margin_bottom = 19.0
+text = "Current Customers:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Current_Customers_Label" type="Label" parent="HBoxContainer/Displays/HBoxContainer3"]
+margin_left = 128.0
+margin_top = 5.0
+margin_right = 239.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "100"
+align = 2
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="HBoxContainer/Displays"]
+margin_top = 162.0
+margin_right = 239.0
+margin_bottom = 186.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="Label" type="Label" parent="HBoxContainer/Displays/HBoxContainer4"]
+margin_top = 5.0
+margin_right = 175.0
+margin_bottom = 19.0
+text = "Customer Acquisition rate: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Customer_Acquisition_Rate" type="Label" parent="HBoxContainer/Displays/HBoxContainer4"]
+margin_left = 179.0
+margin_top = 5.0
+margin_right = 239.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "100"
+align = 2
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="HBoxContainer/Displays"]
+margin_top = 190.0
+margin_right = 239.0
+margin_bottom = 214.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="Label" type="Label" parent="HBoxContainer/Displays/HBoxContainer6"]
+margin_top = 5.0
+margin_right = 73.0
+margin_bottom = 19.0
+text = "Sales Per S:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Current_Sales_Rate" type="Label" parent="HBoxContainer/Displays/HBoxContainer6"]
+margin_left = 77.0
+margin_top = 5.0
+margin_right = 239.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "100"
+align = 2
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="HBoxContainer/Displays"]
+margin_top = 218.0
+margin_right = 239.0
+margin_bottom = 242.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="Label" type="Label" parent="HBoxContainer/Displays/HBoxContainer7"]
+margin_top = 5.0
+margin_right = 101.0
+margin_bottom = 19.0
+text = "Sales Efficiency:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sales_Efficiency" type="Label" parent="HBoxContainer/Displays/HBoxContainer7"]
+margin_left = 105.0
+margin_top = 5.0
+margin_right = 239.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "10%"
+align = 2
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+margin_left = 243.0
+margin_right = 253.0
+margin_bottom = 242.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 257.0
+margin_right = 364.0
+margin_bottom = 242.0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_right = 107.0
+margin_bottom = 14.0
+text = "Upgrades"
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 107.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="Delivery_Upgrade_Button" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_top = 46.0
+margin_right = 107.0
+margin_bottom = 66.0
+hint_tooltip = "Delivery_Test_Tooltip"
+text = "Delivery"
+
+[node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 70.0
+margin_right = 107.0
+margin_bottom = 94.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="Storage_Upgrade_Button" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_top = 98.0
+margin_right = 107.0
+margin_bottom = 118.0
+text = "Storage"
+
+[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 122.0
+margin_right = 107.0
+margin_bottom = 146.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="Advertisment_Upgrade_Button" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_top = 150.0
+margin_right = 107.0
+margin_bottom = 170.0
+text = "Advertisement"
+
+[node name="Shop_Upgrade_Button" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_top = 174.0
+margin_right = 107.0
+margin_bottom = 194.0
+text = "New Shop"
+
+[node name="Sales_Tactics_Upgrade_Button" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_top = 198.0
+margin_right = 107.0
+margin_bottom = 218.0
+text = "Sales Tactics"
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Delivery_Upgrade_Button" to="." method="_on_Delivery_Upgrade_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Storage_Upgrade_Button" to="." method="_on_Storage_Upgrade_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Advertisment_Upgrade_Button" to="." method="_on_Advertisment_Upgrade_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Shop_Upgrade_Button" to="." method="_on_Shop_Upgrade_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Sales_Tactics_Upgrade_Button" to="." method="_on_Sales_Tactics_Upgrade_Button_pressed"]
