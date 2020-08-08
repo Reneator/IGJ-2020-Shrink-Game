@@ -1,5 +1,16 @@
 extends Node
 
+"""
+TODO:
+
+- Upgrade costs
+- Customers Crowd
+- Upgrade_Tooltips
+- Proper rates-upgrade-scalings!
+
+"""
+
+
 var active = false #if the loop is running or not, so the game can be paused
 
 var money = 0 #the money you have available to buy upgrades
