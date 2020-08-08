@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Panel_Hide_Button.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Background/Background.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Pixel_Coleco_Theme.tres" type="Theme" id=9]
 [ext_resource path="res://Customers.gd" type="Script" id=10]
 [ext_resource path="res://Store_Fronts.gd" type="Script" id=11]
+[ext_resource path="res://Storages.gd" type="Script" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -40,9 +41,19 @@ __meta__ = {
 [node name="Storages" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+current_number = 4
+storage_1_path = NodePath("Storage")
+storage_2_path = NodePath("Storage2")
+storage_3_path = NodePath("Storage3")
+storage_4_path = NodePath("Storage4")
+threshold_1 = 1
+threshold_2 = 2
+threshold_3 = 3
+threshold_4 = 4
 
 [node name="Storage3" parent="Storages" instance=ExtResource( 7 )]
 margin_left = 511.146
@@ -75,7 +86,7 @@ script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-store_fronts_count = 7
+store_fronts_count = 1
 store_front_1 = NodePath("Store_Front_1")
 store_front_2 = NodePath("Store_Front_2")
 store_front_3 = NodePath("Store_Front_3")
@@ -92,24 +103,28 @@ threshold_6 = 6
 threshold_7 = 7
 
 [node name="Store_Front_7" parent="Store_Fronts" instance=ExtResource( 6 )]
+visible = false
 margin_left = 784.292
 margin_top = 101.846
 margin_right = 944.292
 margin_bottom = 261.846
 
 [node name="Store_Front_5" parent="Store_Fronts" instance=ExtResource( 6 )]
+visible = false
 margin_left = 654.668
 margin_top = 161.306
 margin_right = 814.668
 margin_bottom = 321.306
 
 [node name="Store_Front_4" parent="Store_Fronts" instance=ExtResource( 6 )]
+visible = false
 margin_left = 522.667
 margin_top = 220.766
 margin_right = 682.667
 margin_bottom = 380.766
 
 [node name="Store_Front_2" parent="Store_Fronts" instance=ExtResource( 6 )]
+visible = false
 margin_left = 377.583
 margin_top = 263.578
 margin_right = 537.583
@@ -122,12 +137,14 @@ margin_right = 407.23
 margin_bottom = 481.263
 
 [node name="Store_Front_3" parent="Store_Fronts" instance=ExtResource( 6 )]
+visible = false
 margin_left = 131.861
 margin_top = 373.703
 margin_right = 291.861
 margin_bottom = 533.703
 
 [node name="Store_Front_6" parent="Store_Fronts" instance=ExtResource( 6 )]
+visible = false
 margin_left = 9.74872
 margin_top = 422.398
 margin_right = 169.749
@@ -140,7 +157,7 @@ script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-customer_count = 1000000000
+customer_count = 1000000
 customer_1 = NodePath("Customers_1")
 customer_2 = NodePath("Customers_2")
 customer_3 = NodePath("Customers_3")
@@ -159,21 +176,18 @@ threshold_7 = 1000000
 threshold_8 = 1000000000
 
 [node name="Customers_3" parent="Customers" instance=ExtResource( 8 )]
-visible = false
 margin_left = 853.303
 margin_top = 177.076
 margin_right = 1023.3
 margin_bottom = 347.076
 
 [node name="Customers_7" parent="Customers" instance=ExtResource( 8 )]
-visible = false
 margin_left = 907.336
 margin_top = 281.963
 margin_right = 1077.34
 margin_bottom = 451.963
 
 [node name="Customers_4" parent="Customers" instance=ExtResource( 8 )]
-visible = false
 margin_left = 773.701
 margin_top = 281.963
 margin_right = 943.701
@@ -192,14 +206,12 @@ margin_right = 612.728
 margin_bottom = 556.732
 
 [node name="Customers_5" parent="Customers" instance=ExtResource( 8 )]
-visible = false
 margin_left = 573.688
 margin_top = 398.637
 margin_right = 743.688
 margin_bottom = 568.637
 
 [node name="Customers_6" parent="Customers" instance=ExtResource( 8 )]
-visible = false
 margin_left = 715.761
 margin_top = 392.288
 margin_right = 885.761
@@ -318,7 +330,6 @@ margin_bottom = 19.0
 text = "$"
 
 [node name="Toggle_Button" type="Button" parent="."]
-visible = false
 margin_left = 961.992
 margin_top = 566.813
 margin_right = 1013.99
@@ -330,6 +341,7 @@ __meta__ = {
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="Toggle_Button"]
+self_modulate = Color( 1, 1, 1, 0.937255 )
 margin_left = -417.206
 margin_top = -260.582
 margin_right = 54.7941
@@ -617,6 +629,7 @@ rect_min_size = Vector2( 0, 24 )
 margin_top = 50.0
 margin_right = 142.0
 margin_bottom = 74.0
+hint_tooltip = "Delivery_Test_Tooltip"
 text = "Delivery"
 
 [node name="Label4" type="Label" parent="Toggle_Button/PanelContainer/HBoxContainer/VBoxContainer"]

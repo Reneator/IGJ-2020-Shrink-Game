@@ -40,20 +40,42 @@ func set_customer_count(count):
 	refresh_customers()
 
 func refresh_customers():
+	if not cust_1:
+		cust_1 = get_node(customer_1)
 	if cust_1:
 		cust_1.visible = customer_count >= threshold_1
+	if not cust_2:
+		cust_2 = get_node(customer_2)
 	if cust_2:
 		cust_2.visible = customer_count >= threshold_2
+	
+	if not cust_3:
+		cust_3 = get_node(customer_3)
 	if cust_3:
 		cust_3.visible = customer_count >= threshold_3
+	
+	if not cust_4:
+		cust_4 = get_node(customer_4)
 	if cust_4:
 		cust_4.visible = customer_count >= threshold_4
+	
+	if not cust_5:
+		cust_5 = get_node(customer_5)
 	if cust_5:
 		cust_5.visible = customer_count >= threshold_5
+	
+	if not cust_6:
+		cust_6 = get_node(customer_6)
 	if cust_6:
 		cust_6.visible = customer_count >= threshold_6
+
+	if not cust_7:
+		cust_7 = get_node(customer_7)
 	if cust_7:
 		cust_7.visible = customer_count >= threshold_7
+	
+	if not cust_8:
+		cust_8 = get_node(customer_8)
 	if cust_8:
 		cust_8.visible = customer_count >= threshold_8
 	
