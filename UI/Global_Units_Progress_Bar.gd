@@ -8,6 +8,6 @@ func _process(delta):
 	$TextureProgress.value = floor(units_remaining)
 	$TextureProgress.max_value = floor(start_value)
 	
-	var percent_value = (start_value / units_remaining)   * 100.0
+	var percent_value = ( units_remaining/start_value)   * 100.0
 	$Progress_Label.text = "%d%%" % percent_value
 

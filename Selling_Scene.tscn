@@ -287,6 +287,7 @@ margin_right = 175.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 350, 200 )
 theme = ExtResource( 9 )
+popup_exclusive = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

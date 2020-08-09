@@ -16,6 +16,8 @@ var start_price_per_unit = 10 #Price per unit that people are willing to pay (do
 func _process(delta):
 	if not active:
 		return
+	if units_remaining_globally <= 0:
+		win()
 	sell_unit_tick(delta)
 	deliver_units_tick(delta)
 	attract_customers_tick(delta)
@@ -42,8 +44,7 @@ func deliver_units_tick(delta):
 		current_delivery_tick = 0
 
 func deliver_units():
-	if units_remaining_globally <= 0:
-		win()
+
 	var deliver_rate = get_deliver_rate()
 	var max_storage = get_max_storage()
 	var space_left = max_storage - units_in_storage
@@ -64,7 +65,13 @@ func get_max_storage():
 		storage += (storage_upgrade_level - 10) * 10000
 	if storage_upgrade_level > 20:
 		storage += (storage_upgrade_level -20) * 100000
-		
+	if storage_upgrade_level > 30:
+		storage += (storage_upgrade_level -30) * 1000000
+	if storage_upgrade_level > 40:
+		storage += (storage_upgrade_level -40) * 10000000
+	if storage_upgrade_level > 50:
+		storage += (storage_upgrade_level -50) * 100000000
+	
 	return storage
 
 func get_number_of_storages():
@@ -73,7 +80,7 @@ func get_number_of_storages():
 func get_storage_fill_percent():
 	var max_storage = get_max_storage()
 	var current_units = units_in_storage
-	return current_units/max_storage
+	return float(current_units)/float(max_storage)
 
 func upgrade_storage():
 	var cost = get_storage_upgrade_cost()
@@ -90,22 +97,22 @@ func upgrade_delivery():
 	delivery_upgrade_level += 1
 
 func get_delivery_upgrade_cost():
-	return 100 * delivery_upgrade_level
+	return get_deliver_rate() * pow(1.01, delivery_upgrade_level)
 
 func get_delivery_upgrade_tooltip():
 	var cost = get_delivery_upgrade_cost()
 	return """Invest into better Logistics to deliver more Boxes!
 	Current Level: %d
-	Cost: %d""" % [delivery_upgrade_level, cost]
+	Cost: %d $""" % [delivery_upgrade_level, cost]
 
 func get_storage_upgrade_cost():
-	return 100 * storage_upgrade_level
+	return get_max_storage()
 
 func get_storage_upgrade_tooltip():
 	var cost = get_storage_upgrade_cost()
 	return """Buy more storage space to fit all those boxes!
 	Current Level: %d
-	Cost: %d""" % [storage_upgrade_level, cost]
+	Cost: %d $""" % [storage_upgrade_level, cost]
 
 #END-STORAGE
 
@@ -132,14 +139,14 @@ func upgrade_customer_rate():
 	customer_rate_upgrade_level += 1
 
 func get_customer_rate_upgrade_cost():
-	return 100 * customer_rate_upgrade_level
+	return 100 * pow(2.5,customer_rate_upgrade_level)
 
 func get_customer_rate_upgrade_tooltip():
 	var cost = get_customer_rate_upgrade_cost()
 	return """Invest more money into advertisment
 	to win more potential customers!
 	Current Level: %d
-	Cost: %d
+	Cost: %d $
 	""" % [customer_rate_upgrade_level, cost]
 #END-CUSTOMERS
 
@@ -165,30 +172,42 @@ func sell_units():
 		return
 	var sell_rate = get_sales_rate()
 	
-	var raw_sales = ceil(sell_rate)
-	var sales
-	
+	var raw_sales
+	if sell_rate < 1:
+		raw_sales = 1
+	else:
+		raw_sales = round(sell_rate)
 
-		
+	var sales
 	if units_in_storage < raw_sales:
 		sales = units_in_storage
 	else:
 		sales = raw_sales
 	
-	if sales > current_customers:
-		sales = ceil(current_customers)
-
+	var price = get_price()
 	
 	units_in_storage -= sales
-	current_customers -= sales
-	money += start_price_per_unit * sales
+	var customer_losses = get_customer_loss()
+	current_customers -= customer_losses
+	money += price * sales
 
 func get_sales_rate(): #depends on interested customers
 	var sales_efficiency = get_sales_efficiency()
-	return current_customers * sales_efficiency * shop_upgrade_level
+	return current_customers * sales_efficiency
+
+func get_customer_loss():
+	var sales_efficiency = get_sales_efficiency()
+	if sales_efficiency < 1:
+		return current_customers * sales_efficiency
+	if sales_efficiency > 1:
+		return current_customers
+
 
 func get_sales_efficiency():
-	return 0.1 * sales_efficiency_upgrade_level
+	return 0.1 * pow(1.7,sales_efficiency_upgrade_level)
+
+func get_price():
+	return pow(1.2,shop_upgrade_level - 1) * 10
 
 func upgrade_shop():
 	var cost = get_upgrade_shop_cost()
@@ -198,10 +217,10 @@ func upgrade_shop():
 	shop_upgrade_level+=1
 
 func get_upgrade_shop_cost():
-	return 100 * shop_upgrade_level
+	return 100/shop_upgrade_level * pow(shop_upgrade_level,shop_upgrade_level)
 
 func get_sales_efficiency_cost():
-	return 100 * sales_efficiency_upgrade_level
+	return 100 * pow(sales_efficiency_upgrade_level, sales_efficiency_upgrade_level)
 
 func upgrade_sales_efficiency():
 	var cost = get_sales_efficiency_cost()
@@ -213,17 +232,22 @@ func upgrade_sales_efficiency():
 func get_sales_efficiency_upgrade_tooltip():
 	var cost = get_sales_efficiency_cost()
 	return """Improve your sales-department so 
-	they can make more people buy!
+	they can make a higher percentage of your customers
+	buy your product!
+	Maybe even get them to buy more than one!
 	Current Level: %d
-	Cost: %d""" % [sales_efficiency_upgrade_level, cost]
+	Cost: %d $""" % [sales_efficiency_upgrade_level, cost]
 
 func get_shop_upgrade_tooltip():
 	var cost  = get_upgrade_shop_cost()
+	var price = get_price()
 #	return "blubb"
-	return """Upgrade your Shops and double your sales!
+	return """Upgrade your Shops and you can take more money
+	per product!
 	Current Level: %d
 	Cost: %d $
-	""" % [shop_upgrade_level, cost]
+	Current Price: %d $
+	""" % [shop_upgrade_level, cost, price]
 
 #END-SALES
 
@@ -237,5 +261,6 @@ func pay(cost):
 
 func win():
 	active = false
+	units_remaining_globally = 0
 	emit_signal("win")
 	print("You win!")
