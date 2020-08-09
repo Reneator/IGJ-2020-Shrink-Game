@@ -7,6 +7,8 @@ TODO:
 - Customers Crowd
 - Upgrade_Tooltips
 - Proper rates-upgrade-scalings!
+- Audience-scaling
+- Store-front scaling
 
 """
 
@@ -80,6 +82,12 @@ func upgrade_storage():
 func upgrade_delivery():
 	delivery_upgrade_level += 1
 
+func get_delivery_upgrade_tooltip():
+	return "delivery_upgrade"
+
+func get_storage_upgrade_tooltip():
+	return "storage_upgrade"
+
 #END-STORAGE
 
 
@@ -99,7 +107,11 @@ func get_current_customers():
 
 func upgrade_customer_rate():
 	customer_rate_upgrade_level += 1
+
+func get_customer_rate_upgrade_tooltip():
+	return "customer_rate_upgrade_tooltip"
 #END-CUSTOMERS
+
 
 
 #SALES
@@ -152,6 +164,12 @@ func upgrade_shop():
 
 func upgrade_sales_efficiency():
 	sales_efficiency_upgrade_level+=1
+
+func get_sales_efficiency_upgrade_tooltip():
+	return "sales_efficiency_upgrade"
+
+func get_shop_upgrade_tooltip():
+	return "shop_upgrade"
 
 #END-SALES
 
